@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+#RewriteCond %{REQUEST_FILENAME}    -d
+#RewriteRule .*      -       [L]
+###
+#RewriteCond %{REQUEST_FILENAME} !(server-status)
+###
+RewriteCond %{REQUEST_FILENAME}    -f
+RewriteRule .*      -       [L]
+
+# all request pass to app.php
+RewriteCond %{REQUEST_FILENAME} !(server-status)
+RewriteRule ^(.*)$ dist/index.html [L,QSA]
